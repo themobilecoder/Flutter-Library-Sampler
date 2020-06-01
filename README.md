@@ -1,6 +1,6 @@
 # library_sampler
 
-Library sampler app to test out plugins
+Library sampler app to test out plugins, libraries or any Flutter APIs.
 
 ## Getting Started
 
