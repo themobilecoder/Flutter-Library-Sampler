@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_sampler/dart_rss/dart_rss_screen.dart';
 import 'package:library_sampler/flutter_widget_from_html_core/widget_from_html_screen.dart';
 import 'package:library_sampler/widgets/generic_button.dart';
 
@@ -30,15 +31,25 @@ class HomePage extends StatelessWidget {
         title: Text('Library Sampler'),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            GenericButton(
-              child: Text('WidgetFromHtmlCore'),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) => WidgetFromHtmlScreen()));
-              },
-            ),
-          ],
+        child: Container(
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              GenericButton(
+                child: Text('Flutter Widget From Html Core'),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_) => WidgetFromHtmlScreen()));
+                },
+              ),
+              GenericButton(
+                child: Text('Dart RSS'),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_) => DartRssScreen()));
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
