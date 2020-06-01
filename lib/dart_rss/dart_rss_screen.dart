@@ -3,6 +3,7 @@ import 'package:dart_rss/dart_rss.dart';
 import 'package:http/http.dart' as http;
 import 'package:library_sampler/dart_rss/rss_item_container.dart';
 import 'package:library_sampler/widgets/generic_loading_spinner.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DartRssScreen extends StatefulWidget {
   @override
@@ -27,16 +28,20 @@ class _DartRssScreenState extends State<DartRssScreen> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final rssFeed = snapshot.data;
-              final ads = rssFeed.items;
+              final rssItems = rssFeed.items;
               return ListView.builder(
                   itemCount: rssFeed.items.length,
                   itemBuilder: (context, index) {
+                    final rssItem = rssItems[index];
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: RssItemContainer(
-                        title: ads[index].title,
-                        subtitle: ads[index].pubDate,
-                        imageUrl: _getImageFromDescription(ads[index].description),
+                        title: rssItem.title,
+                        subtitle: rssItem.pubDate,
+                        imageUrl: _getImageFromDescription(rssItem.description),
+                        onTapListener: () async {
+                          await launch(rssItem.link, forceSafariVC: false);
+                        },
                       ),
                     );
                   });
