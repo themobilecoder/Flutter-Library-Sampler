@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:library_sampler/flutter_widget_from_html_core/widget_from_html_screen.dart';
+import 'package:library_sampler/widgets/generic_button.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +29,18 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Library Sampler'),
       ),
-      body: Container(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            GenericButton(
+              child: Text('WidgetFromHtmlCore'),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) => WidgetFromHtmlScreen()));
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
