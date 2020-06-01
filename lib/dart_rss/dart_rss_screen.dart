@@ -5,19 +5,9 @@ import 'package:library_sampler/dart_rss/rss_item_container.dart';
 import 'package:library_sampler/widgets/generic_loading_spinner.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class DartRssScreen extends StatefulWidget {
-  @override
-  _DartRssScreenState createState() => _DartRssScreenState();
-}
-
-class _DartRssScreenState extends State<DartRssScreen> {
+class DartRssScreen extends StatelessWidget {
   final client = http.Client();
   final url = 'https://themobilecoder.com/rss';
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
